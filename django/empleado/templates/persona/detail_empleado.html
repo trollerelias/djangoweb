@@ -1,0 +1,103 @@
+
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+  {{ object.full_name }}
+{% endblock title %}
+
+
+
+
+{% block content %}
+{% include 'includes/header.html' %}
+
+
+             
+<div class="grid-container">
+    <div class="grid-x grid-margin-x">
+        <h1 class="cell">Detalle de el empleado</h1>
+
+        <form class="cell callout grid-x grid-margin-x" method="POST">{% csrf_token %}
+            <div class=" cell large-12">
+                <h3>ID:
+                    {{ empleado.id }}
+                </h3>
+            </div>
+            
+            
+            <div class=" cell large-12">
+                <h3>Nombre:
+                    {{ empleado.first_name }}
+                </h3>
+            </div>
+
+            <div class=" cell large-12">
+                <h3>Apellido:
+                    {{ empleado.last_name }}
+                </h3>
+            </div>
+
+            <div class=" cell large-12">
+                <h3>Departamento:
+                    {{ empleado.departamento }}
+                </h3>
+            </div>
+
+            <div class=" cell large-12">
+                <h3>Trabajo:
+                    {{ empleado.get_job_display }}
+                </h3>
+            </div>
+            
+            <div class=" cell large-12">
+                <h3>
+                    Habilidades:
+                        <ul>
+                        
+                            {% for h in empleado.habilidades.all %}
+                                <li>{{ h.habilidad }}</li>
+                            {% endfor %}
+                            
+                        </ul>
+
+                    
+                    
+                </h3>
+            </div>
+            
+            <div class=" cell large-4">
+                <label>
+                    {% if empleado.avatar %}
+                        <img src="{{ empleado.avatar.url }}">
+                    {% else %}
+                        <img src="{% static 'img/todo3.jpg' %}">   
+
+
+                    {% endif %}
+                
+                </label>
+            </div>
+        
+        
+
+            
+            
+        </form>
+
+
+    </div>
+</div>
+         
+
+            
+
+
+
+
+
+
+
+
+{% endblock content %}

@@ -1,0 +1,28 @@
+<!--este codigo es para cargar los archivos staticos que son el css y el javescrip para darle un mejor diseño a la pagina-->
+{% load static %}
+
+<!--esta es la base html que usremos, para no repetir codigo usamos esta base para generar todas las pestañas que sean necesarias a partir de esta-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/foundation.css' %}">
+    <title>{% block title %}{% endblock title %}</title>
+</head> 
+<body>
+    {% block content %}{% endblock content %}
+<!--Esto es para hacer la conexion con java scrip-->
+
+  
+    <script src="{% static 'js/vendor.js' %}"></script>
+    <script src="{% static 'js/foundation.js' %}"></script>
+    
+    
+    <script>
+      $(document).foundation();
+    </script>
+
+
+
+</body>
+</html>
